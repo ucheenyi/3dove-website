@@ -1,0 +1,22 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="100" fill="url(#gradient0_linear_1_1)"/>
+  
+  <!-- Dove silhouette -->
+  <path d="M70 85 C65 75, 75 65, 85 70 L120 75 C125 65, 135 65, 140 75 L145 80 C150 85, 145 95, 140 90 L130 95 C135 105, 125 115, 115 110 L100 105 C95 115, 85 115, 80 105 L75 100 C70 95, 75 85, 70 85 Z" fill="white" opacity="0.9"/>
+  
+  <!-- Dove details -->
+  <circle cx="85" cy="78" r="3" fill="#1a237e"/>
+  <circle cx="125" cy="78" r="3" fill="#1a237e"/>
+  
+  <!-- Wing details -->
+  <path d="M90 85 C95 80, 105 80, 110 85 C105 90, 95 90, 90 85 Z" fill="rgba(26, 35, 126, 0.3)"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient0_linear_1_1" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DAA520"/>
+      <stop offset="0.5" stop-color="#FFD700"/>
+      <stop offset="1" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
+</svg>
