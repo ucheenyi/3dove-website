@@ -1,9 +1,85 @@
-Simple step
+# Deploying 3DOVE Website with HTTPS
 
-1.  docker run -d -p 80:80 -p 443:443   -v /path/to/ssl:/etc/nginx/ssl   ucheenyi/3dove-website:v1
-2. docker exec into the container and add the cert and key ssl files in /etc/nginx/ssl
-3. back up and edit the nginx config file:
- docker exec 4004d706783b cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+## Detailed Steps for HTTPS Setup
+
+1. **Start the Docker container** with ports 80 and 443 mapped:
+   ```bash
+   docker run -d -p 80:80 -p 443:443 -v /path/to/ssl:/etc/nginx/ssl --name 3dove-website ucheenyi/3dove-website:v2
+   ```
+
+2. **Copy SSL certificate files** into the container:
+   ```bash
+   docker cp /path/to/domain.cert 3dove-website:/etc/nginx/ssl/
+   docker cp /path/to/private.key 3dove-website:/etc/nginx/ssl/
+   ```
+
+3. **Create Nginx configuration** with SSL support:
+   ```bash
+   cat > nginx.conf << 'EOF'
+   server {
+       listen 80;
+       server_name 3dove.cloud www.3dove.cloud;
+       return 301 https://$host$request_uri;
+   }
+
+   server {
+       listen 443 ssl;
+       server_name 3dove.cloud www.3dove.cloud;
+
+       ssl_certificate /etc/nginx/ssl/domain.cert;
+       ssl_certificate_key /etc/nginx/ssl/private.key;
+
+       ssl_protocols TLSv1.2 TLSv1.3;
+       ssl_prefer_server_ciphers on;
+       ssl_ciphers EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
+       ssl_session_cache shared:SSL:10m;
+       ssl_session_timeout 1d;
+
+       root /usr/share/nginx/html;
+       index index.html index.htm;
+
+       location / {
+           try_files $uri $uri/ /index.html;
+       }
+   }
+   EOF
+   ```
+
+4. **Backup existing config** and apply the new one:
+   ```bash
+   docker exec 3dove-website cp /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+   docker cp nginx.conf 3dove-website:/etc/nginx/conf.d/default.conf
+   ```
+
+5. **Test the configuration**:
+   ```bash
+   docker exec 3dove-website nginx -t
+   ```
+
+6. **Reload Nginx** to apply changes:
+   ```bash
+   docker exec 3dove-website nginx -s reload
+   ```
+
+7. **Verify setup**:
+   ```bash
+   # Check if Nginx is listening on both ports
+   docker exec 3dove-website netstat -tuln
+   
+   # Verify SSL files exist
+   docker exec 3dove-website ls -la /etc/nginx/ssl/
+   
+   # Check for errors
+   docker exec 3dove-website cat /var/log/nginx/error.log
+   ```
+
+8. **If needed, restart the container**:
+   ```bash
+   docker restart 3dove-website
+   ```
+
+## Original Steps
+
 4. see default.conf file below:
 
  server {
@@ -34,6 +110,17 @@ server {
 }
 
 5. exit the container and reload the nginx
+docker exec 9fc03dbc1155 nginx -s reload
+
+
+6. Checks:
+docker exec 9fc03dbc1155 netstat -tuln
+docker exec 9fc03dbc1155 ls -la /etc/nginx/ssl/
+docker exec 9fc03dbc1155 cat /var/log/nginx/error.log
+docker restart 9fc03dbc1155
+
+
+
 
 
 Great to hear that you’ve added the A record in **Porkbun** and it’s working, meaning your domain (e.g., `yourdomain.com`) now resolves to the Azure VM’s public IP (`13.93.136.206`). This should resolve the previous `curl: (60) SSL: no alternative certificate subject name matches target host name '13.93.136.206'` error when testing HTTPS, as you can now access the site via `https://yourdomain.com`, where the Porkbun SSL certificate should match. Building on our prior conversation, you’re deploying a static site in a Docker container (`yourusername/3dove-website:v1`) on an Azure VM, using Nginx with a Porkbun SSL certificate, and have fixed a `location` directive error in the Nginx configuration.
