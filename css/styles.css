@@ -1065,3 +1065,336 @@ footer p {
         font-size: 16px;
     }
 }
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: #d4af37;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    nav {
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out;
+        z-index: 99;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 20px 0;
+    }
+    
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+/* Mobile Navigation Styles - Updated */
+@media (max-width: 768px) {
+    nav {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 200;
+    }
+    
+    .bar {
+        height: 3px;
+        width: 100%;
+        background-color: #d4af37;
+        border-radius: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out;
+        z-index: 100;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 20px 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition-delay: 0.1s;
+    }
+    
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+/* Additional body styles for menu open state */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Fix for iOS Safari */
+.hamburger-menu {
+    -webkit-tap-highlight-color: transparent;
+}
+/* Mobile menu link styles */
+@media (max-width: 768px) {
+    .nav-links li a {
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+        color: #d4af37;
+    }
+}
+/* About section mobile responsiveness */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-text {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .about-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .about-logo {
+        max-width: 150px;
+        height: auto;
+        display: block;
+    }
+}
+/* Center align about text on mobile */
+@media (max-width: 768px) {
+    .about-text {
+        text-align: center;
+    }
+    
+    .about-text h2 {
+        text-align: center;
+    }
+    
+    .about-text p {
+        text-align: center;
+    }
+}
+/* Fix About section container on mobile */
+@media (max-width: 768px) {
+    .about .container {
+        padding: 0 15px;
+    }
+    
+    .about-content {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .about-text {
+        padding: 0;
+        margin: 0 0 30px 0;
+        text-align: center;
+    }
+    
+    .about-text h2 {
+        margin-bottom: 20px;
+    }
+    
+    .about-text p {
+        margin-bottom: 15px;
+        padding: 0 5px;
+    }
+}
+/* Force center alignment for About section on mobile */
+@media (max-width: 768px) {
+    .about-content {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .about-text {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+        float: none !important;
+    }
+    
+    .about-text h2,
+    .about-text p {
+        text-align: center !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+/* Adjust logo position in About section on mobile */
+@media (max-width: 768px) {
+    .about-image {
+        margin-bottom: 40px !important;
+    }
+    
+    .about-logo {
+        max-width: 180px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .about {
+        padding-bottom: 20px !important;
+    }
+}
+/* Add spacing between company name parts */
+.company-name .limited-text {
+    margin-left: 5px;
+}
+/* Fix alignment of contact icons */
+.contact-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-item svg {
+    flex-shrink: 0;
+}
+/* Contact item alignment fix */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-item {
+    display: flex !important;
+    align-items: center !important;
+    margin: 10px 0 !important;
+    width: 100% !important;
+}
+
+.contact-icon-container {
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+/* Fix contact item alignment */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+.contact-icon-container {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+/* Fix hamburger menu background color */
+@media (max-width: 768px) {
+    .nav-links {
+        background-color: #0c1e35 !important; /* Match desktop menu background color */
+    }
+}
