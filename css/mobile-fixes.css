@@ -1,0 +1,48 @@
+/* Mobile fixes for embedded content */
+@media (max-width: 768px) {
+  /* Fix for AI-Enhanced Learning container in slide 4 */
+  iframe[src*="3dove-ad"] {
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 600px !important;
+    overflow: hidden !important;
+  }
+  
+  /* Add this to your 3dove-ad.html page */
+  .ai-learning-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .ai-learning-content {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+  
+  .ai-learning-content h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .ai-learning-content p {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Fix orientation issues */
+  @media screen and (orientation: portrait) {
+    .slide-content {
+      flex-direction: column !important;
+    }
+  }
+  
+  @media screen and (orientation: landscape) {
+    .slide-content {
+      flex-direction: row !important;
+    }
+  }
+}

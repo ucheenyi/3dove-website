@@ -1398,3 +1398,276 @@ body.menu-open {
         background-color: #0c1e35 !important; /* Match desktop menu background color */
     }
 }
+/* Enhance background image visibility */
+.hero::before {
+    opacity: 0.6 !important; /* Reduce overlay opacity to make background more visible */
+}
+
+.hero {
+    background-blend-mode: soft-light !important; /* Change blend mode for better visibility */
+}
+
+.services, .about, .contact {
+    background-blend-mode: soft-light !important;
+}
+
+.services::before, .about::before, .contact::before {
+    opacity: 0.65 !important; /* Reduce overlay opacity */
+}
+
+/* Increase contrast for text to ensure readability */
+.hero-content h1, .section-title h2, .about-text h2, .contact-info h2 {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8) !important; /* Add text shadow for better readability */
+}
+
+.hero-content p, .section-title p, .about-text p, .contact-info p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7) !important;
+}
+/* Fine-tune background image visibility */
+.contact::before {
+    opacity: 0.75 !important; /* Increase opacity for contact section (less transparent) */
+}
+
+.contact {
+    background-blend-mode: multiply !important; /* Darker blend mode for contact section */
+}
+/* Adjust header transparency */
+.hero::before {
+    opacity: 0.7 !important; /* Increase opacity for hero/header section (less transparent) */
+}
+
+.hero {
+    background-blend-mode: multiply !important; /* Slightly darker blend mode for header */
+}
+/* Further adjust contact section transparency */
+.contact::before {
+    opacity: 0.82 !important; /* Further increase opacity for contact section */
+}
+/* Style for Feeds link */
+.nav-links li a[href*="3dove-ad"] {
+    position: relative;
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.nav-links li a[href*="3dove-ad"]::after {
+    content: "New";
+    position: absolute;
+    top: -8px;
+    right: -20px;
+    background-color: #d4af37;
+    color: #000;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+/* Enhanced background images and styling */
+
+/* Hero section background enhancement */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(12,30,53,0.8) 100%);
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4af37" stroke-width="0.5" stroke-opacity="0.2"/></svg>');
+    opacity: 0.2;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* Services section background enhancement */
+.services {
+    background-image: linear-gradient(rgba(12, 30, 53, 0.9), rgba(12, 30, 53, 0.9)), 
+                      url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(12,30,53,0.7) 0%, rgba(0,0,0,0.9) 100%);
+    z-index: 1;
+}
+
+/* About section background enhancement */
+.about {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                      url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(12,30,53,0.9) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+/* Contact section background enhancement */
+.contact {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(12,30,53,0.9) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+/* Section content positioning */
+.services .container, .about .container, .contact .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Add subtle animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title, .service-card, .about-text, .about-image, .contact-info, .contact-form {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Add subtle hover effects */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Add gold accents */
+.section-title h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #d4af37, #f9d776);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+/* Improve readability of service section text */
+.service-card p {
+    color: #ffffff !important;
+    font-weight: 400 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    line-height: 1.6 !important;
+    font-size: 1.05rem !important;
+    letter-spacing: 0.01em !important;
+}
+
+.service-card {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    padding: 25px !important;
+    border-radius: 8px !important;
+}
+
+.service-card h3 {
+    color: #d4af37 !important;
+    margin-bottom: 15px !important;
+    font-size: 1.5rem !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+/* Make contact section background more visible */
+.contact {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.contact::before {
+    opacity: 0.6 !important;
+    background: linear-gradient(to right, rgba(12,30,53,0.7) 0%, rgba(0,0,0,0.6) 100%) !important;
+}
+
+/* Style contact form for better visibility */
+.contact-form {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 25px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.contact-info {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 25px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
+/* Tone down the About section background */
+.about {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                      url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') !important;
+}
+
+.about::before {
+    opacity: 0.85 !important;
+    background: linear-gradient(45deg, rgba(0,0,0,0.9) 0%, rgba(12,30,53,0.9) 100%) !important;
+}
+
+/* Style About section content for better visibility */
+.about-content {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 25px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+}
